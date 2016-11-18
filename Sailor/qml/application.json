@@ -1,0 +1,14 @@
+{
+    "appName": "Sailor",
+    "clientName": "Seamantec",
+    "pages": [
+        {
+            "pageId": "PAGE1",
+            "url": "qrc:/qml/Page1.qml"
+        },
+        {
+            "pageId": "PAGE2",
+            "url": "qrc:/qml/Page1.qml"
+        }
+    ]
+}

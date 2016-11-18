@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/Page.qml</file>
+        <file>qml/ImageButton.qml</file>
+        <file>qml/MapPlaces.qml</file>
+        <file>qml/PageMgr.qml</file>
+        <file>qml/XMLParser.qml</file>
+        <file>qml/application.json</file>
+        <file>qml/Page1.qml</file>
+        <file>qml/Page2.qml</file>
+        <file>icons/ico-navigate-back.png</file>
+        <file>icons/ico-boat.png</file>
+    </qresource>
+</RCC>
