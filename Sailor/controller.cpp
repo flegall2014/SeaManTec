@@ -84,11 +84,11 @@ void Controller::onNextHeadingAvailable(int iHeading)
 }
 
 // Next position available:
-void Controller::onNextPositionAvailable(double dLongitude, double dLatitude)
+void Controller::onNextPositionAvailable(double dLatitude, double dLongitude)
 {
     QVariantMap nextPosition;
-    nextPosition[LONGITUDE] = dLongitude;
     nextPosition[LATITUDE] = dLatitude;
+    nextPosition[LONGITUDE] = dLongitude;
     m_vNextPosition = nextPosition;
     emit nextPositionAvailable();
 }

@@ -1,13 +1,19 @@
 {
     "appName": "Sailor",
     "clientName": "Seamantec",
+    "windowWidth": 360,
+    "windowHeight": 720,
+    "originalLat": 44.94,
+    "originalLon": 14.59,
     "pages": [
         {
             "pageId": "PAGE1",
+            "pageLabel": "Page1",
             "url": "qrc:/qml/Page1.qml"
         },
         {
             "pageId": "PAGE2",
+            "pageLabel": "Page2",
             "url": "qrc:/qml/Page1.qml"
         }
     ]

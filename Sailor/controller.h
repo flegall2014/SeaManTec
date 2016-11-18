@@ -66,7 +66,7 @@ public slots:
     void onNextHeadingAvailable(int iHeading);
 
     // Next position available:
-    void onNextPositionAvailable(double dLongitude, double dLatitude);
+    void onNextPositionAvailable(double dLatitude, double dLongitude);
 
 signals:
     // New heading available:

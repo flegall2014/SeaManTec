@@ -3,9 +3,9 @@ import QtQuick.Window 2.2
 
 Window {
     id: mainWindow
-    width: 650
-    height: 1440
-    visible: true
+    visible: false
+    width: 360
+    height: 720
 
     // Application data:
     property variant _appData: undefined
@@ -21,14 +21,18 @@ Window {
             // Set application data:
             _appData = JSON.parse(responseText)
 
-            // Log:
-            console.log("Response text: " + responseText)
-
-            // Update title:
+            // Set title:
             mainWindow.title = _appData.appName + "/" + _appData.clientName
+
+            // Resize:
+            mainWindow.width = _appData.windowWidth
+            mainWindow.height = _appData.windowHeight
 
             // Load main application:
             pageMgrLoader.sourceComponent = pageMgrComponent
+
+            // Show:
+            mainWindow.visible = true
         }
     }
 

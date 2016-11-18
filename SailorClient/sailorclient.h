@@ -11,8 +11,8 @@
 #define IDENTIFIER "identifier"
 #define MESSAGE "message"
 #define HEADING "heading"
-#define LONGITUDE "longitude"
 #define LATITUDE "latitude"
+#define LONGITUDE "longitude"
 
 class SAILORCLIENTSHARED_EXPORT SailorClient : public QObject
 {
@@ -45,14 +45,11 @@ private:
     bool m_debug;
 
 signals:
-    // Disconnected: TO DO
-    void disconnected();
-
     // New heading available:
     void newHeadingAvailable(int iHeading);
 
     // New position available:
-    void newPositionAvailable(double dLongitude, double dLatitude);
+    void newPositionAvailable(double dLatitude, double dLongitude);
 
 public slots:
     // Connection success:
@@ -60,6 +57,9 @@ public slots:
 
     // Text message received:
     void onTextMessageReceived(const QString &messageData);
+
+    // Disconnected:
+    void onDisconnected();
 };
 
 #endif // SAILORCLIENT_H

@@ -15,7 +15,7 @@ SailorClient::SailorClient(const QUrl &url, bool debug, QObject *parent) :
     if (m_debug)
         qDebug() << "WebSocket server:" << url;
     connect(&m_webSocket, &QWebSocket::connected, this, &SailorClient::onConnected);
-    connect(&m_webSocket, &QWebSocket::disconnected, this, &SailorClient::disconnected);
+    connect(&m_webSocket, &QWebSocket::disconnected, this, &SailorClient::onDisconnected);
     connect(&m_webSocket, static_cast<void(QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
             [=](QAbstractSocket::SocketError error){ qDebug() << "ERROR " << error; });
     m_webSocket.open(QUrl(url));
@@ -56,9 +56,9 @@ void SailorClient::onTextMessageReceived(const QString &sMessageData)
             QVariantMap mMessageData = jsonData.toMap();
             QVariantMap sMessageContents =
                     mMessageData[MESSAGE].toMap();
-            double dLongitude = sMessageContents[LONGITUDE].toDouble();
             double dLatitude = sMessageContents[LATITUDE].toDouble();
-            emit newPositionAvailable(dLongitude, dLatitude);
+            double dLongitude = sMessageContents[LONGITUDE].toDouble();
+            emit newPositionAvailable(dLatitude, dLongitude);
         }
     }
 }
@@ -100,8 +100,8 @@ SailorClient::MessageType SailorClient::messageType(const QVariant &jsonData)
                             mMessageData[MESSAGE].toMap();
                     if (mMessageContents.contains(HEADING))
                         return HEADING_TO;
-                    if (mMessageContents.contains(LONGITUDE) &&
-                            mMessageContents.contains(LATITUDE))
+                    if (mMessageContents.contains(LATITUDE) &&
+                            mMessageContents.contains(LONGITUDE))
                         return CURRENT_POSITION;
                 }
                 else return UNDEFINED;
@@ -111,4 +111,11 @@ SailorClient::MessageType SailorClient::messageType(const QVariant &jsonData)
         else return UNDEFINED;
     }
     return UNDEFINED;
+}
+
+// Disconnected:
+void SailorClient::onDisconnected()
+{
+    // Reopen automatically:
+    m_webSocket.open(QUrl(m_url));
 }

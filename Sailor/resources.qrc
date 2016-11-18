@@ -11,5 +11,6 @@
         <file>qml/Page2.qml</file>
         <file>icons/ico-navigate-back.png</file>
         <file>icons/ico-boat.png</file>
+        <file>qml/CustomRadioButton.qml</file>
     </qresource>
 </RCC>

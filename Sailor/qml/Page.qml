@@ -2,6 +2,7 @@ import QtQuick 2.5
 
 Item {
     property string pageId: ""
+    property string pageLabel: ""
     property bool isFirstPage: false
     signal backButtonClicked()
 
